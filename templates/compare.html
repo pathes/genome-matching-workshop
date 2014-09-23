@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Compare sequence</h2>
+<form action="index.php" method="POST" class="form">
+  <div class="form-group">
+    <label for="sequence">Sequence</label>
+    <textarea name="sequence" class="form-control" placeholder="Enter here new sequence..."></textarea>
+  </div>
+  <div class="form-group">
+    <label for="signature">Signature</label>
+    <input type="text" class="form-control" name="signature" placeholder="Your signature" />
+  </div>
+  <input class="btn btn-primary" type="submit" value="Send" />
+</form>
+{% if result %}
+<h2>
+  Your result:
+  <span class="label label-success">{{ result }}%</span>
+</h2>
+{% endif %}
+{% endblock %}

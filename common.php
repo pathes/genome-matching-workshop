@@ -34,6 +34,7 @@ function create_compared($data, $signature) {
     $handle = fopen('./data/' . $signature, 'w');
     fwrite($handle, $data);
     fclose($handle);
+    return 100;
 }
 
 ?>
