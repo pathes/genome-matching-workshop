@@ -9,7 +9,7 @@ function sanitizeData($data) {
     // Convert to lowercase
     $data = strtolower($data);
     // Add \n between characters
-    $data = preg_replace('/.\{1\}/', '&\n', $data);
+    $data = preg_replace('/(.)/', '${1}'."\n", $data);
     return $data;
 }
 
