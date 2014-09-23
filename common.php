@@ -31,7 +31,7 @@ function create_exemplar($data) {
 function create_compared($data, $signature) {
     $data = sanitizeData($data);
     $signature = base64_encode($signature . ' - ' . date('h:i:s'));
-    $handle = fopen('./data/' . $signature, 'w');
+    $handle = fopen('./data/submissions/' . $signature, 'w');
     fwrite($handle, $data);
     fclose($handle);
     return 'OK';
@@ -39,12 +39,20 @@ function create_compared($data, $signature) {
 
 function list_submissions() {
     $submissions = array();
-    foreach (glob('data/*') as $path) {
-        $url = substr($path, strlen('data/'));
+    foreach (glob('data/submissions/*[^.php]') as $path) {
+        $url = substr($path, strlen('data/submissions/'));
         $name = base64_decode($url);
         $submissions[$url] = $name;
     }
     return $submissions;
+}
+
+function compare_with_exemplar($filename) {
+    // Check if $filename is base64-encoded value
+    if (!preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $filename)) {
+        return '';
+    }
+    return shell_exec('diff data/exemplar.txt data/submissions/' . $filename);
 }
 
 ?>

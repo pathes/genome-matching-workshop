@@ -13,7 +13,7 @@ if (isset($_POST['sequence']) && isset($_POST['signature'])) {
 try {
     $loader = new Twig_Loader_Filesystem('templates');
     $twig = new Twig_Environment($loader);
-    $template = $twig->loadTemplate('compare.html');
+    $template = $twig->loadTemplate('submit.html');
 
     // set template variables
     // render template

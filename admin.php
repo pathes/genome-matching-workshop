@@ -25,16 +25,27 @@ if (isset($_POST['exemplar'])) {
     create_exemplar($_POST['exemplar']);
 }
 
+// Admin routing: comparing exemplar and picked sequence
+if (isset($_GET['submission'])) {
+    $template = 'admin_compare.html';
+    $vars = array(
+        'diff' => compare_with_exemplar($_GET['submission'])
+    );
+} else {
+    $template = 'admin.html';
+    $vars = array(
+        'submissions' => list_submissions()
+    );
+}
+
 try {
     $loader = new Twig_Loader_Filesystem('templates');
     $twig = new Twig_Environment($loader);
-    $template = $twig->loadTemplate('admin.html');
+    $template = $twig->loadTemplate($template);
 
     // set template variables
     // render template
-    echo $template->render(array(
-        'submissions' => list_submissions()
-    ));
+    echo $template->render($vars);
 } catch (Exception $e) {
     die('ERROR: ' . $e->getMessage());
 }

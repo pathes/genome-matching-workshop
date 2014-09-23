@@ -11,11 +11,11 @@
 <h2>Submitted sequences</h2>
 <table class="table table-striped">
     {% for url, submission in submissions %}
-    <td>
+    <tr><td>
         <a href="admin.php?submission={{ url }}">
             {{ submission }}
         </a>
-    </td>
+    </td></tr>
     {% endfor %}
 </table>
 
