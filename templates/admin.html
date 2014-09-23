@@ -2,7 +2,13 @@
 {% block content %}
 <h2>Update exemplary sequence</h2>
 <form action="admin.php" method="POST" class="form">
-<textarea name="exemplar" placeholder="Enter here new sequence..."></textarea>
-<input type="submit" value="Send" />
+  <div class="row">
+    <div class="col-sm-12">
+      <textarea name="exemplar" placeholder="Enter here new sequence..."></textarea>
+    </div>
+    <div class="col-sm-12">
+      <input class="btn btn-primary" type="submit" value="Send" />
+    </div>
+  </div>
 </form>
 {% endblock %}
