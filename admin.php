@@ -33,8 +33,7 @@ try {
     // set template variables
     // render template
     echo $template->render(array(
-        'test' => 'Lorem Ipsum',
-        'list' => array(1, 2, 3)
+        'submissions' => list_submissions()
     ));
 } catch (Exception $e) {
     die('ERROR: ' . $e->getMessage());

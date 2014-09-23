@@ -12,10 +12,16 @@
   </div>
   <input class="btn btn-primary" type="submit" value="Send" />
 </form>
-{% if result %}
+{% if result == 'OK' %}
 <h2>
   Your result:
-  <span class="label label-success">{{ result }}%</span>
+  <span class="label label-success">OK</span>
+</h2>
+{% elseif result == 'FAIL' %}
+<h2>
+    Your result:
+    <span class="label label-danger">FAIL</span>
 </h2>
 {% endif %}
+
 {% endblock %}

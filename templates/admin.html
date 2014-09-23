@@ -8,4 +8,15 @@
   </div>
   <input class="btn btn-primary" type="submit" value="Send" />
 </form>
+<h2>Submitted sequences</h2>
+<table class="table table-striped">
+    {% for url, submission in submissions %}
+    <td>
+        <a href="admin.php?submission={{ url }}">
+            {{ submission }}
+        </a>
+    </td>
+    {% endfor %}
+</table>
+
 {% endblock %}

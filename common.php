@@ -30,11 +30,21 @@ function create_exemplar($data) {
 
 function create_compared($data, $signature) {
     $data = sanitizeData($data);
-    $signature = base64_encode($signature);
+    $signature = base64_encode($signature . ' - ' . date('h:i:s'));
     $handle = fopen('./data/' . $signature, 'w');
     fwrite($handle, $data);
     fclose($handle);
-    return 100;
+    return 'OK';
+}
+
+function list_submissions() {
+    $submissions = array();
+    foreach (glob('data/*') as $path) {
+        $url = substr($path, strlen('data/'));
+        $name = base64_decode($url);
+        $submissions[$url] = $name;
+    }
+    return $submissions;
 }
 
 ?>
